@@ -73,6 +73,7 @@ jobs:
             conda config --set quiet true
             conda install conda-build
             anaconda login --username $ACD_UN --password $ACD_PWD
+            conda config --set anaconda_upload yes
             conda build .anaconda
 
 workflows:
