@@ -67,11 +67,12 @@ jobs:
       - run:
           name: build anaconda
           command: |
+            apt-get install binutils
             conda config --add channels conda-forge
             conda config --set always_yes true
             conda config --set quiet true
             conda install conda-build
-            conda build .anaconda/meta.yaml
+            conda build .anaconda
 
 workflows:
   version: 2
