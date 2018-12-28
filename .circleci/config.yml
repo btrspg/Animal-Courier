@@ -36,12 +36,23 @@ jobs:
             pip install codecov
             coverage run tests/demo_test.py
 
+
       - run:
           name: run install
           command: |
             . venv/bin/activate
             python setup.py install
             multi_run.py -h
+
+      - run:
+          name: store_test
+          command: |
+            mkdir test-reports
+            coverage report && coverage xml -o test-reports/coverage.xml
+      - store_test_results:
+         path: test-reports
+      - store_artifacts:
+         path: test-reports
 
 
 
