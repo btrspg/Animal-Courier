@@ -81,7 +81,9 @@ workflows:
   build_and_conda_test:
     jobs:
       - build
-      - anaconda
+      - anaconda:
+          require:
+            - build
 
 
 
