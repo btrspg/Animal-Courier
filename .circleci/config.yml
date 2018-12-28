@@ -49,6 +49,8 @@ jobs:
           command: |
             mkdir test-reports
             . venv/bin/activate
+            pip install codecov
+            codecov
             coverage report && coverage xml -o test-reports/coverage.xml
       - store_test_results:
          path: test-reports
