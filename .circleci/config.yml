@@ -48,6 +48,7 @@ jobs:
           name: store_test
           command: |
             mkdir test-reports
+            . venv/bin/activate
             coverage report && coverage xml -o test-reports/coverage.xml
       - store_test_results:
          path: test-reports
