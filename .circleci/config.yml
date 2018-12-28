@@ -58,7 +58,7 @@ jobs:
          path: test-reports
   anaconda:
     docker:
-      - image: continuumio/miniconda3
+      - image: continuumio/anaconda3
     working_directory: ~/repo
     steps:
       - checkout
