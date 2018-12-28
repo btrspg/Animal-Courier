@@ -4,7 +4,8 @@
 ![](https://img.shields.io/circleci/project/github/dota2-BioTools/Animal-Courier/master.svg)
 ![](https://img.shields.io/github/release/dota2-BioTools/Animal-Courier.svg)
 ![](https://img.shields.io/github/last-commit/dota2-BioTools/Animal-Courier.svg)
-![](https://img.shields.io/conda/dn/btrspg/shikamaru-bwa.svg)
+![](https://img.shields.io/conda/dn/btrspg/Animal-Courier.svg)
+![](https://codecov.io/gh/codecov/dota2-BioTools/branch/master/Animal-Courier/badge.svg)
 
 # 说明
 
