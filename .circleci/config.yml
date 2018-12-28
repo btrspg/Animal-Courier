@@ -72,7 +72,7 @@ jobs:
             conda config --set always_yes true
             conda config --set quiet true
             conda install conda-build
-            anaconda login --username $anaconda_username --password $anaconda_pwd
+            anaconda login --username $UN --password $PWD
             conda build .anaconda
 
 workflows:
