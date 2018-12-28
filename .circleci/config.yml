@@ -80,8 +80,8 @@ workflows:
     jobs:
       - build
       - anaconda:
-          require:
-            - build
+        require:
+          - build
 
 
 
