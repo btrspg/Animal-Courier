@@ -57,6 +57,20 @@ jobs:
       - store_artifacts:
          path: test-reports
 
+  anaconda:
+    docker:
+      - image: continuumio/miniconda3
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run:
+          name: build anaconda
+          command: |
+            conda config --add channels conda-forge
+            conda config --set always_yes true
+            conda config --set quiet true
+            conda install conda-build
+            conda build .anaconda/meta.yaml
 
 
 
