@@ -67,12 +67,12 @@ jobs:
       - run:
           name: build anaconda
           command: |
-            apt-get install binutils
+#            apt-get install binutils
             conda config --add channels conda-forge
             conda config --set always_yes true
             conda config --set quiet true
             conda install conda-build
-            anaconda login --username $UN --password $PWD
+            anaconda login --username $ACD_UN --password $ACD_PWD
             conda build .anaconda
 
 workflows:
