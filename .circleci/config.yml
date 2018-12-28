@@ -74,14 +74,14 @@ jobs:
             conda install conda-build
             conda build .anaconda/meta.yaml
 
-workflows:
-  version: 2
-  build_and_conda_test:
-    jobs:
-      - build
-      - anaconda:
-        require:
-          - build
+#workflows:
+#  version: 2
+#  build_and_conda_test:
+#    jobs:
+#      - build
+#      - anaconda:
+#        require:
+#          - build
 
 
 
