@@ -82,8 +82,8 @@ workflows:
     jobs:
       - build
       - anaconda:
-          require:
-            - build
+        requires:
+          - build
 
 
 
