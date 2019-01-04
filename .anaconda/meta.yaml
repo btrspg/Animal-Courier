@@ -1,4 +1,4 @@
-{% set version = "0.1.0.a" %}
+{% set version = "0.1.0.alpha" %}
 
 
 package:
@@ -10,8 +10,8 @@ build:
   script: $PYTHON setup.py install
 
 source:
-  git_url: https://github.com/dota2-BioTools/Animal-Courier.git
-  git_rev: bfccc58bcdf147ce8d93a4f5eadd861c393d2222
+  url: https://github.com/dota2-BioTools/Animal-Courier/archive/v{{ version }}.tar.gz
+
 
 requirements:
   build:
