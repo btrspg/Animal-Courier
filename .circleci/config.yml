@@ -43,6 +43,8 @@ jobs:
             . venv/bin/activate
             python setup.py install
             multi_run.py -h
+            multi_run.py --shell tests/test.sh --work-name test
+            multi_run.py --shell tests/test.sh --work-name WORK
 
       - run:
           name: store_test

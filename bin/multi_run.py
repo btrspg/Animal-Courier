@@ -30,48 +30,54 @@ def get_args():
                         help='shell scripts')
     parser.add_argument('--thread', default=4, type=int, action='store',
                         help='thread number')
+    parser.add_argument('--work-name', default='work', type=str,
+                        help='logs name prefix')
     return parser.parse_args()
 
 
 # TODO:Move methods in to another Tree
 # TODO: add a count, like 24 tasks this is number 10 [10/24]
-def popen(cmd):
+def popen(cmd, prefix):
     p = subprocess.Popen(cmd, stderr=subprocess.PIPE,
                          stdout=subprocess.PIPE,
                          shell=True)
     pid = p.pid
     start = time.time()
-    log.info('Start to run the cmd in {}:{}...'.format(pid, cmd[0:10]))
+    log.info('Start to run the cmd in {}:{}...'.format(pid, os.path.basename(prefix)))
     stdout, stderr = p.communicate()
-    write_out_err(cmd, pid, stdout, stderr)
     interval = (time.time() - start) / 60
-    log.info('Finshed the cmd in {}:{}...'.format(pid, cmd[0:10]))
+    write_out_err_cmd(cmd, pid, stdout, stderr, interval, prefix)
+    log.info('Finshed the cmd in {}:{}...'.format(pid, os.path.basename(prefix)))
 
     return interval
 
 
-def write_out_err(cmd, pid, out, err):
+def write_out_err_cmd(cmd, pid, out, err, cost_time, prefix):
     '''
 
     :param cmd:
     :param pid:
     :param out:
     :param err:
+    :param cost_time:
+    :param prefix:
     :return:
     '''
 
-    tag = cmd.replace('/', '_').split(' ')[0]
-    prefix = './log/{tag}.{pid}'.format(tag=tag, pid=pid)
+    prefix = '{prefix}.{pid}'.format(prefix=prefix, pid=pid)
     log.info('Write both stdout and stderr log in {} [prefix]'.format(prefix))
-    with open(prefix + '.o', 'w') as obuf, open(prefix + '.e', 'w') as ebuf:
-        obuf.write('CMD:{}\n\n\n'.format(cmd))
+    with open(prefix + '.o', 'w') as obuf, open(prefix + '.e', 'w') as ebuf, open(prefix + '.sh', 'w') as cmdbuf:
+        cmdbuf.write('#! /bin/sh\n{}'.format(cmd))
+        obuf.write('COST:{}\n\n\nCMD:{}\n\n\n'.format(cost_time, cmd))
         obuf.write(out.decode('utf8'))
         ebuf.write(err.decode('utf8'))
 
 
 # TODO:Move methods in to another Tree
-def get_cmds(shell_script):
+def get_cmds(shell_script, work_log, work_name):
+    from animalcourier.formats import number
     cmds = []
+    n = 1
     with open(shell_script, 'r') as f:
         line = f.readline()
 
@@ -79,23 +85,34 @@ def get_cmds(shell_script):
             # print(line)
             line = line.strip('\n')
             if (not line.startswith('#')) and line != '':
-                cmds.append(line)
+                n += 1
+                prefix = '{work_log}/{work_name}{number}/'.format(work_log=work_log,
+                                                                  work_name=work_name,
+                                                                  number=number.normalized(n, 4))
+                os.makedirs(prefix, 0o755, exist_ok=True)
+
+                cmds.append([line, '{prefix}/{work_name}{number}'.format(prefix=prefix,
+                                                                         work_name=work_name,
+                                                                         number=number.normalized(n, 4))])
             line = f.readline()
     return cmds
 
 
 def main():
     args = get_args()
-    os.makedirs('./log')
+    work_log = './log.{work}.{date}'.format(
+        work=args.work_name,
+        date=time.strftime("%Y%m%d%H%M%S", time.localtime())
+    )
+    os.makedirs(work_log)
     log.info('Get command args, and args are :{}'.format(args.shell))
     pool = Pool(args.thread)
-    cmds = get_cmds(args.shell)
+    cmds = get_cmds(args.shell, work_log, args.work_name)
 
-    result = pool.map(popen, cmds)
+    pool.starmap_async(popen, cmds)
     pool.close()
     pool.join()
-    for i, j in zip(cmds, result):
-        print('COST %.2f mins! , CMD: %s ,' % (j, i))
+    log.info('ALL FINISHED!!')
 
 
 if __name__ == '__main__':
