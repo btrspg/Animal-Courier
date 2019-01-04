@@ -77,7 +77,7 @@ def write_out_err_cmd(cmd, pid, out, err, cost_time, prefix):
 def get_cmds(shell_script, work_log, work_name):
     from animalcourier.formats import number
     cmds = []
-    n = 1
+    n = 0
     with open(shell_script, 'r') as f:
         line = f.readline()
 
