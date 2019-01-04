@@ -1,8 +1,12 @@
 [latest]
 
-version=v0.1.0.a
+version=v0.1.1.alpha
 
 
-[v0.1.0.a]
+[v0.1.1.alpha]
+date=2019.1.4
+content=新加入任务标记，方便查找各个任务的cmd及stderr及stdout
+
+[v0.1.0.alpha]
 date=2018.12.27
 content=test
