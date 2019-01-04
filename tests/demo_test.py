@@ -24,7 +24,5 @@ class TestStringMethods(unittest.TestCase):
         self.assertEqual('444', number.normalized(444, 2))
 
 
-
-
 if __name__ == '__main__':
     unittest.main()
