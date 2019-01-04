@@ -45,6 +45,7 @@ jobs:
             multi_run.py -h
             multi_run.py --shell tests/test.sh --work-name test
             multi_run.py --shell tests/test.sh --work-name WORK
+            ls -R test WORK
 
       - run:
           name: store_test
