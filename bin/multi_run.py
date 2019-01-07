@@ -19,10 +19,11 @@ from multiprocessing import Pool
 import pandas as pd
 
 log_format = '%(asctime)s %(filename)s [%(levelname)s] %(message)s'
-logging.basicConfig(format=log_format, level=logging.INFO)
+# logging.basicConfig(format=log_format, level=logging.INFO)
 log = logging.getLogger('MRS')
 log_stdout = logging.StreamHandler()
 log_stdout.setFormatter(log_format)
+log_stdout.setLevel(logging.INFO)
 log.addHandler(log_stdout)
 
 
@@ -113,6 +114,7 @@ def main():
     )
     log_file = logging.FileHandler('{work_log}.log'.format(work_log=work_log))
     log_file.setFormatter(log_format)
+    log_file.setLevel(logging.INFO)
     log.addHandler(log_file)
 
     os.makedirs(work_log)
