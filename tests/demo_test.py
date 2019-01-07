@@ -25,10 +25,10 @@ class TestStringMethods(unittest.TestCase):
         self.assertEqual('1.22', number.float_normalized(1.2244))
         self.assertEqual('0.4', number.float_normalized(0.4444444, length=1))
 
-    # def test_utils(self):
-    #     from animalcourier.utils import write_out
-    #     write_out.write_both_file_and_stream('test', 'testfile')
-    #     self.assertFalse(not os.path.exists('testfile'))
+    def test_utils(self):
+        from animalcourier.utils import write_out
+        write_out.write_both_file_and_stream('test', 'testfile')
+        self.assertFalse(not os.path.exists('testfile'))
 
 
 if __name__ == '__main__':
