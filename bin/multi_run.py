@@ -119,10 +119,10 @@ def main():
     pool.close()
     pool.join()
     log.info('ALL FINISHED!!')
-    log.info('===' * 30)
+    # log.info('===' * 30)
     summary = pd.DataFrame(all_infos, columns=['Time(mins)', 'Work'])
     print(summary.to_string())
-    print(summary.describe())
+    print(summary['Time(mins)'].astype(float).describe())
 
 
 if __name__ == '__main__':
