@@ -131,7 +131,9 @@ def main():
     summary = pd.DataFrame(all_infos, columns=['Time(mins)', 'Work'])
     write_out.write_both_file_and_stream('==' * 30, '{work_log}.log'.format(work_log=work_log))
     write_out.write_both_file_and_stream(summary.to_string(), '{work_log}.log'.format(work_log=work_log))
-    # write_out.write_both_file_and_stream('==' * 30, '{work_log}.log'.format(work_log=work_log))
+    write_out.write_both_file_and_stream('==' * 30, '{work_log}.log'.format(work_log=work_log))
+    describe= summary['Time(mins)'].astype(float).describe()
+    print(describe)
     # write_out.write_both_file_and_stream(summary['Time(mins)'].astype(float).describe(),
     #                                      '{work_log}.log'.format(work_log=work_log))
 
