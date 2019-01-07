@@ -19,12 +19,12 @@ from multiprocessing import Pool
 import pandas as pd
 
 log_format = '%(asctime)s %(filename)s [%(levelname)s] %(message)s'
-# logging.basicConfig(format=log_format, level=logging.INFO)
+logging.basicConfig(format=log_format, level=logging.INFO)
 log = logging.getLogger('MRS')
-log_stdout = logging.StreamHandler()
-log_stdout.setFormatter(logging.Formatter(log_format))
-log_stdout.setLevel(logging.INFO)
-log.addHandler(log_stdout)
+# log_stdout = logging.StreamHandler()
+# log_stdout.setFormatter(logging.Formatter(log_format))
+# log_stdout.setLevel(logging.INFO)
+# log.addHandler(log_stdout)
 
 
 # TODO:Move methods in to another Tree
@@ -133,9 +133,8 @@ def main():
     write_out.write_both_file_and_stream(summary.to_string(), '{work_log}.log'.format(work_log=work_log))
     write_out.write_both_file_and_stream('==' * 30, '{work_log}.log'.format(work_log=work_log))
     describe= summary['Time(mins)'].astype(float).describe()
-    print(describe)
-    # write_out.write_both_file_and_stream(summary['Time(mins)'].astype(float).describe(),
-    #                                      '{work_log}.log'.format(work_log=work_log))
+    # print(describe)
+    write_out.write_both_file_and_stream(describe,'{work_log}.log'.format(work_log=work_log))
 
 
 if __name__ == '__main__':
