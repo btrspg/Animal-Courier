@@ -6,17 +6,16 @@ version = configparser.ConfigParser()
 version.read('VERSION')
 
 install_requires = [
-    'numpy>=1.15'
+    'numpy>=1.15',
+    'pandas>=0.23.4'
 ]
 tests_require = [
     'unittest'
 ]
 
-scripts=[
+scripts = [
     'bin/multi_run.py'
 ]
-
-
 
 setup(
     name='Animal-Courier',

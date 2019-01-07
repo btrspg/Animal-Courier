@@ -16,8 +16,11 @@ import subprocess
 import time
 from multiprocessing import Pool
 
+import pandas as pd
+
 logging.basicConfig(format='%(asctime)s %(filename)s [%(levelname)s] %(message)s', level=logging.INFO)
 log = logging.getLogger('MRS')
+log.addHandler(logging.StreamHandler())
 
 
 # TODO:Move methods in to another Tree
@@ -38,6 +41,7 @@ def get_args():
 # TODO:Move methods in to another Tree
 # TODO: add a count, like 24 tasks this is number 10 [10/24]
 def popen(cmd, prefix):
+    from animalcourier.formats import number
     p = subprocess.Popen(cmd, stderr=subprocess.PIPE,
                          stdout=subprocess.PIPE,
                          shell=True)
@@ -49,7 +53,7 @@ def popen(cmd, prefix):
     write_out_err_cmd(cmd, pid, stdout, stderr, interval, prefix)
     log.info('Finshed the cmd in {}:{}...'.format(pid, os.path.basename(prefix)))
 
-    return interval
+    return number.float_normalized(interval), os.path.basename(prefix)
 
 
 def write_out_err_cmd(cmd, pid, out, err, cost_time, prefix):
@@ -104,15 +108,21 @@ def main():
         work=args.work_name,
         date=time.strftime("%Y%m%d%H%M%S", time.localtime())
     )
+    log.addHandler(logging.FileHandler('{work_log}.log'.format(work_log=work_log)))
+
     os.makedirs(work_log)
     log.info('Get command args, and args are :{}'.format(args.shell))
     pool = Pool(args.thread)
     cmds = get_cmds(args.shell, work_log, args.work_name)
 
-    pool.starmap_async(popen, cmds)
+    all_infos = pool.starmap(popen, cmds)
     pool.close()
     pool.join()
     log.info('ALL FINISHED!!')
+    log.info('===' * 30)
+    summary = pd.DataFrame(all_infos, columns=['Time(mins)', 'Work'])
+    print(summary.to_string())
+    print(summary.describe())
 
 
 if __name__ == '__main__':

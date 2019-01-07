@@ -22,6 +22,8 @@ class TestStringMethods(unittest.TestCase):
         from animalcourier.formats import number
         self.assertEqual('00232', number.normalized(232, 5))
         self.assertEqual('444', number.normalized(444, 2))
+        self.assertEqual('1.22', number.float_normalized(1.2344))
+        self.assertEqual('0.4', number.float_normalized(0.4444444, length=1))
 
 
 if __name__ == '__main__':

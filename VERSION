@@ -1,6 +1,12 @@
 [latest]
 
-version=v0.1.1.alpha
+version=v0.1.2.alpha
+
+
+[v0.1.2.alpha]
+date=2019.1.7
+content=任务运行修改为顺序（starmap_async-> starmap）
+    添加新的log，并正在整体结果统计（时间）
 
 
 [v0.1.1.alpha]
