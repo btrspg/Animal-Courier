@@ -107,6 +107,7 @@ def get_cmds(shell_script, work_log, work_name):
 
 
 def main():
+    from animalcourier.utils import write_out
     args = get_args()
     work_log = './log.{work}.{date}'.format(
         work=args.work_name,
@@ -128,10 +129,11 @@ def main():
     log.info('ALL FINISHED!!')
     # log.info('===' * 30)
     summary = pd.DataFrame(all_infos, columns=['Time(mins)', 'Work'])
-    print('==' * 30)
-    print(summary.to_string())
-    print('==' * 30)
-    print(summary['Time(mins)'].astype(float).describe())
+    write_out.write_both_file_and_stream('==' * 30, '{work_log}.log'.format(work_log=work_log))
+    write_out.write_both_file_and_stream(summary.to_string(), '{work_log}.log'.format(work_log=work_log))
+    write_out.write_both_file_and_stream('==' * 30, '{work_log}.log'.format(work_log=work_log))
+    write_out.write_both_file_and_stream(summary['Time(mins)'].astype(float).describe(),
+                                         '{work_log}.log'.format(work_log=work_log))
 
 
 if __name__ == '__main__':
