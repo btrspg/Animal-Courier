@@ -18,9 +18,12 @@ from multiprocessing import Pool
 
 import pandas as pd
 
-logging.basicConfig(format='%(asctime)s %(filename)s [%(levelname)s] %(message)s', level=logging.INFO)
+log_format = '%(asctime)s %(filename)s [%(levelname)s] %(message)s'
+logging.basicConfig(format=log_format, level=logging.INFO)
 log = logging.getLogger('MRS')
-log.addHandler(logging.StreamHandler())
+log_stdout = logging.StreamHandler()
+log_stdout.setFormatter(log_format)
+log.addHandler(log_stdout)
 
 
 # TODO:Move methods in to another Tree
@@ -108,7 +111,9 @@ def main():
         work=args.work_name,
         date=time.strftime("%Y%m%d%H%M%S", time.localtime())
     )
-    log.addHandler(logging.FileHandler('{work_log}.log'.format(work_log=work_log)))
+    log_file = logging.FileHandler('{work_log}.log'.format(work_log=work_log))
+    log_file.setFormatter(log_format)
+    log.addHandler(log_file)
 
     os.makedirs(work_log)
     log.info('Get command args, and args are :{}'.format(args.shell))
@@ -121,7 +126,9 @@ def main():
     log.info('ALL FINISHED!!')
     # log.info('===' * 30)
     summary = pd.DataFrame(all_infos, columns=['Time(mins)', 'Work'])
+    print('==' * 30)
     print(summary.to_string())
+    print('==' * 30)
     print(summary['Time(mins)'].astype(float).describe())
 
 
