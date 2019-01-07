@@ -45,7 +45,7 @@ jobs:
             multi_run.py -h
             multi_run.py --shell tests/test.sh --work-name test
             multi_run.py --shell tests/test.sh --work-name WORK
-            ls -R log.test* log.WORK*
+            ll -R log.test* log.WORK*
             cat log.*log
 
       - run:

@@ -19,7 +19,7 @@ from multiprocessing import Pool
 import pandas as pd
 
 log_format = '%(asctime)s %(filename)s [%(levelname)s] %(message)s'
-# logging.basicConfig(format=log_format, level=logging.INFO)
+logging.basicConfig(format=log_format, level=logging.INFO)
 log = logging.getLogger('MRS')
 log_stdout = logging.StreamHandler()
 log_stdout.setFormatter(log_format)
