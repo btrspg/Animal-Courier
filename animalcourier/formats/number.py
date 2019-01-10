@@ -39,6 +39,26 @@ def float_normalized(number, length=2):
     norm = '%.{}f'.format(length)
     return norm % number
 
+def big_number_normalized(number):
+    '''
+    12345-> 12.34k
+    14557775 -> 14.55M
+    :param number:
+    :return:
+    '''
+    if number < 1000:
+        return float_normalized(number)
+    elif number < 1000000:
+        return float_normalized(number/1000)+'K'
+    elif number < 1000000000:
+        return float_normalized(number / 1000000) + 'M'
+    elif number < 1000000000000:
+        # print(number / 1000000000000)
+        return float_normalized(number / 1000000000) + 'G'
+    else:
+        # print(number / 1000000000000000)
+        return float_normalized(number / 1000000000000) + 'T'
+
 
 def main():
     print(normalized(32))
@@ -47,7 +67,11 @@ def main():
     print(float_normalized(1.222))
     print(float_normalized(42))
     print(float_normalized(1.33, 4))
-
+    print(big_number_normalized(123))
+    print(big_number_normalized(123000))
+    print(big_number_normalized(123000000))
+    print(big_number_normalized(1230000000000))
+    print(big_number_normalized(12323416546541321654))
 
 if __name__ == '__main__':
     main()
