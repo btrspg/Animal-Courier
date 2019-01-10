@@ -32,6 +32,18 @@ def check_outfiles(*files):
     return True
 
 
+def check_output_dirs(*dirs):
+    '''
+
+    :param dirs:
+    :return:
+    '''
+    try:
+        [os.makedirs(sdir, exist_ok=True) for sdir in dirs]
+    except PermissionError as e:
+        raise PermissionError(e.args)
+    return True
+
 def check_infiles(*files):
     '''
 

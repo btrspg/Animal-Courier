@@ -11,6 +11,7 @@ from __future__ import absolute_import, unicode_literals
 
 import os
 import sys
+import tempfile
 import unittest
 
 sys.path.append(os.path.abspath(os.path.dirname(os.path.dirname(__file__))))
@@ -26,9 +27,17 @@ class TestStringMethods(unittest.TestCase):
         self.assertEqual('0.4', number.float_normalized(0.4444444, length=1))
 
     def test_utils(self):
-        from animalcourier.utils import write_out
+        from animalcourier.utils import write_out, file
         write_out.write_both_file_and_stream('test', 'testfile')
         self.assertFalse(not os.path.exists('testfile'))
+        self.assertFalse(not file.check_infiles(__file__))
+        self.assertRaises(file.check_infiles(__file__ + 'test'), FileNotFoundError)
+        tmp = tempfile.gettempdir()
+        file.check_outfiles(*['{0}/test{1}/test{1}'.format(tmp, number) for number in range(10)])
+        self.assertFalse(not file.check_infiles(
+            *[os.path.dirname('{0}/test{1}/test{1}'.format(tmp, number)) for number in range(10)]))
+        self.assertRaises(file.check_outfiles('/test/test1'), PermissionError)
+        self.assertRaises(file.check_outfiles('/test/'), PermissionError)
 
 
 if __name__ == '__main__':
