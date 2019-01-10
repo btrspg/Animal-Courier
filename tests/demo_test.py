@@ -25,6 +25,7 @@ class TestStringMethods(unittest.TestCase):
         self.assertEqual('444', number.normalized(444, 2))
         self.assertEqual('1.22', number.float_normalized(1.2244))
         self.assertEqual('0.4', number.float_normalized(0.4444444, length=1))
+        self.assertEqual('1.23T', number.big_number_normalized(1230000000000))
 
     def test_utils(self):
         from animalcourier.utils import write_out, file
