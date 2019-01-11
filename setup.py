@@ -14,7 +14,8 @@ install_requires = [
     'psutil>=5.4.8',
     'python-dateutil>=2.7.5',
     'pytz>=2018.7',
-    'six>=1.12.0'
+    'six>=1.12.0',
+    'plotly>=3.5.0'
 ]
 tests_require = [
     'unittest'
