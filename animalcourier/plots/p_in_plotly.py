@@ -23,10 +23,10 @@ def main():
     import pandas as pd
     data = pd.read_csv(file, index_col=0)
     data['Sun'] = data.sum(axis=1)
-    ploty_lines(data, title='test', filename='/home/chenyuelong/tmp/plot_test.html')
+    ploty_memorys(data, title='test', filename='/home/chenyuelong/tmp/plot_test.html')
 
 
-def ploty_lines(dataframe, title='line-plots', filename='temp-plot.html'):
+def ploty_memorys(dataframe, title='line-plots', filename='temp-plot.html'):
     '''
 
     :param dataframe:
