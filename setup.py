@@ -39,7 +39,7 @@ setup(
     This is just a test package for learn something about 'How to create a python package'
     ''',
     exclude_package_date={
-        'Animal-Courier': ['.gitignore', '.circleci/*'],
+        'Animal-Courier': ['.gitignore', '.circleci/*', '.anaconda/*'],
     },
     install_requires=install_requires,
     scripts=scripts,
