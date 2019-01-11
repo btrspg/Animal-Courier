@@ -48,6 +48,7 @@ def main():
     pool.join()
 
     # log.info('===' * 30)
+    log.info('Stats time of work')
     summary = pd.DataFrame(all_infos, columns=['Time(mins)', 'Work', 'Profile'])
     if args.profile:
         log.info('Stats profiles')

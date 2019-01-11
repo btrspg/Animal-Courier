@@ -24,6 +24,7 @@ requirements:
     - certifi >=2018.11.29
     - numpy >=1.15.4
     - pandas>=0.23.4
+    - plotly>=3.5.0
 
 
 
@@ -35,6 +36,7 @@ requirements:
     - certifi >=2018.11.29
     - numpy >=1.15.4
     - pandas>=0.23.4
+    - plotly>=3.5.0
 
 test:
   command:
