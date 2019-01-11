@@ -44,9 +44,8 @@ jobs:
             python setup.py install
             multi_run.py -h
             multi_run.py --shell tests/test.sh --work-name test --thread 2
-            multi_run.py --shell tests/test.sh --work-name WORK --thread 2
             multi_run.py --shell tests/test.sh --profile --interval 1 --thread 2
-            ls -l -R ./
+            ls -l -R ./log*
             cat log.*log
 
       - run:
