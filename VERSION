@@ -1,7 +1,11 @@
 [latest]
 
-version=v0.1.2.alpha
+version=v0.1.3.alpha
 
+[v0.1.3.alpha]
+date=2019.1.11
+content=可选参数profile，完成运行脚本的内存（RSS）统计
+    方便进行脚本测试
 
 [v0.1.2.alpha]
 date=2019.1.7
