@@ -49,12 +49,12 @@ def get_cmds(shell_script, work_log, work_name,interval):
             line = line.strip('\n')
             if (not line.startswith('#')) and line != '':
                 n += 1
-                prefix = '{work_log}/{work_name}{number}/'.format(work_log=work_log,
+                prefix = '{work_log}/{work_name}.{number}/'.format(work_log=work_log,
                                                                   work_name=work_name,
                                                                   number=number.normalized(n, 4))
                 os.makedirs(prefix, 0o755, exist_ok=True)
 
-                cmds.append([line, '{prefix}/{work_name}{number}'.format(prefix=prefix,
+                cmds.append([line, '{prefix}/{work_name}.{number}'.format(prefix=prefix,
                                                                          work_name=work_name,
                                                                          number=number.normalized(n, 4)),interval])
             line = f.readline()
