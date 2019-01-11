@@ -54,7 +54,7 @@ def main():
         log.info('Stats profiles')
         merge_data = ''
         for _, _, csv in all_infos:
-            data = pd.read_csv(csv, index_col=0)
+            data = pd.read_csv(csv.decode('utf8'), index_col=0)
             merge_data = data[data.columns[-1]].to_frame() if isinstance(merge_data, str) else merge_data.join(data[data.columns[-1]],how='outer')
         from animalcourier.plots import p_in_plotly
         p_in_plotly.ploty_memorys(merge_data,title=os.path.basename(work_log),filename=work_log+'.html')
