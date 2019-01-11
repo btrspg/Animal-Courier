@@ -72,7 +72,7 @@ def process_info(Process, stat_time, cache, name='work', ):
     :param name:
     :return:
     '''
-    name = '{name}-{cmd}-{pid}'.format(name=name, pid=Process.pid, cmd=Process.name())
+    name = '{cmd}-{pid}'.format(name=name, pid=Process.pid, cmd=Process.name())
     cache.setdefault(name, {})
     cache[name][stat_time] = Process.memory_info().rss
     return cache
