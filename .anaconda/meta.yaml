@@ -10,12 +10,14 @@ build:
   script: $PYTHON setup.py install
 
 source:
+  git_url: https://github.com/btrspg/Animal-Courier.git
   url: https://github.com/dota2-BioTools/Animal-Courier/archive/v{{ version }}.tar.gz
 
 
 requirements:
   build:
     - python
+    - plotly
   host:
     - python
     - zlib
