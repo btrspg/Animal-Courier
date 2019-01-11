@@ -19,7 +19,7 @@ sys.path.append(os.path.abspath(os.path.dirname(os.path.dirname(__file__))))
 
 
 # TODO: add a count, like 24 tasks this is number 10 [10/24]
-def popen(cmd, prefix):
+def popen(cmd, prefix,interval=''):
     from animalcourier.formats import number
     from .write_out import write_out_err_cmd
     log = logging.getLogger('MRS')
@@ -37,7 +37,7 @@ def popen(cmd, prefix):
     return number.float_normalized(interval), os.path.basename(prefix),''
 
 
-def get_cmds(shell_script, work_log, work_name):
+def get_cmds(shell_script, work_log, work_name,interval):
     from animalcourier.formats import number
     cmds = []
     n = 0
@@ -56,7 +56,7 @@ def get_cmds(shell_script, work_log, work_name):
 
                 cmds.append([line, '{prefix}/{work_name}{number}'.format(prefix=prefix,
                                                                          work_name=work_name,
-                                                                         number=number.normalized(n, 4))])
+                                                                         number=number.normalized(n, 4)),interval])
             line = f.readline()
     return cmds
 
