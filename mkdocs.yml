@@ -1,0 +1,18 @@
+site_name: Animal-Courier
+site_url: https://dota2-biotools.github.io/Animal-Courier
+repo_url: https://github.com/dota2-BioTools/Animal-Courier
+site_description: Documents for Animal-Courier
+site_author: btrspg
+
+
+
+nav:
+    - 'Home': index.md
+    - 'User Guide': user-guide.md
+    - 'About': about.md
+theme:
+  name: readthedocs
+  highlightjs: true
+  hljs_languages:
+    - yaml
+    - rust
