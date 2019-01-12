@@ -1,6 +1,18 @@
 [latest]
 
-version=v0.1.3.alpha
+version=v0.1.4.alpha
+
+
+[v0.1.5.alpha]
+date=未知
+content=    - work-name和ID区分开
+    - readme update
+    - 加入docs
+    - 单个任务统计时，去掉了最上层进程workname及id，防止名字太长
+
+[v0.1.4.alpha]
+date=2019.1.11
+content=无其他改变，提交上anaconda上版本
 
 [v0.1.3.alpha]
 date=2019.1.11
