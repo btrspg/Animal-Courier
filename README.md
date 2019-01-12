@@ -10,7 +10,7 @@
 
 # 说明
 
-暂时只是做一个慢慢规范写程序的一个小tip，加入一些自认为必要的环节。
+shell脚本并行方法，详情：[https://dota2-biotools.github.io/Animal-Courier](https://dota2-biotools.github.io/Animal-Courier)
 
 ## TODO LIST
 
