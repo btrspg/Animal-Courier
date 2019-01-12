@@ -4,7 +4,8 @@ repo_url: https://github.com/dota2-BioTools/Animal-Courier
 site_description: Documents for Animal-Courier
 site_author: btrspg
 
-
+docs_dir: docs_mkdocs
+site_dir: docs
 
 nav:
     - 'Home': index.md
