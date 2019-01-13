@@ -70,6 +70,8 @@ bwa mem test1.1.fq.gz test1.2.fq.gz reference.fasta | samtools view -bSt referen
 bwa mem test2.1.fq.gz test2.2.fq.gz reference.fasta | samtools view -bSt reference.fasta.fai -o test2.bam
 bwa mem test3.1.fq.gz test3.2.fq.gz reference.fasta | samtools view -bSt reference.fasta.fai -o test3.bam
 ```
+
+
 - #注释的不会当作命令
 - 假设需要运行多个步骤的，推荐适用`;`进行连接
 
