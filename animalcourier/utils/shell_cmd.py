@@ -62,7 +62,10 @@ def get_cmds(shell_script, work_log, work_name,interval):
 
 
 def main():
-    pass
+    import tempfile
+    tmp = tempfile.gettempdir()
+    for i in get_cmds('../..//tests/test.sh',tmp,'test',10):
+        print(i)
 
 
 if __name__ == '__main__':
