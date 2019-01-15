@@ -39,11 +39,12 @@ def write_out_err_cmd(cmd, pid, out, err, cost_time, prefix):
     :return:
     '''
     import logging
+    # from animalcourier.utils.shell_cmd import shell_header
     log = logging.getLogger('MRS')
     prefix = '{prefix}.{pid}'.format(prefix=prefix, pid=pid)
     log.info('Write both stdout and stderr log in {} [prefix]'.format(prefix))
     with open(prefix + '.o', 'w') as obuf, open(prefix + '.e', 'w') as ebuf, open(prefix + '.sh', 'w') as cmdbuf:
-        cmdbuf.write('#! /bin/sh\n{}\n'.format(cmd))
+        # cmdbuf.write(shell_header + cmd)
         obuf.write('COST:{}\n\n\nCMD:{}\n\n\n'.format(cost_time, cmd))
         obuf.write(out.decode('utf8'))
         ebuf.write(err.decode('utf8'))

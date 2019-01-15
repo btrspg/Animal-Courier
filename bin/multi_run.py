@@ -38,7 +38,9 @@ def main():
     log.info('Get command args, and args are :{}'.format(args.shell))
     pool = Pool(args.thread)
     cmds = shell_cmd.get_cmds(args.shell, work_log, args.work_name, args.interval)
-
+    # print(cmds)
+    # for i in cmds:
+    #     print(i)
     if args.profile:
         from animalcourier.profile.psopen import pspopen
         all_infos = pool.starmap(pspopen, cmds)
@@ -54,12 +56,16 @@ def main():
         log.info('Stats profiles')
         merge_data = ''
         for _, _, csv in all_infos:
+            # print('csv:\t'+csv)
             if not os.path.exists(csv): continue
             data = pd.read_csv(csv, index_col=0)
             merge_data = data[data.columns[-1]].to_frame() if isinstance(merge_data, str) else merge_data.join(
                 data[data.columns[-1]], how='outer')
         from animalcourier.plots import p_in_plotly
-        p_in_plotly.ploty_memorys(merge_data, title=os.path.basename(work_log), filename=work_log + '.html')
+        if isinstance(merge_data,str):
+            print('No plots due to no files')
+        else:
+            p_in_plotly.ploty_memorys(merge_data, title=os.path.basename(work_log), filename=work_log + '.html')
     log.info('ALL FINISHED!!')
     write_out.write_both_file_and_stream('==' * 30, '{work_log}.log'.format(work_log=work_log))
     write_out.write_both_file_and_stream(summary.to_string(), '{work_log}.log'.format(work_log=work_log))

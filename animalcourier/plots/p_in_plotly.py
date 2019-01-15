@@ -73,7 +73,7 @@ def _resolve_dataframe(dataframe, cache=None):
         cache = {}
 
     cache.setdefault('data', [])
-    # print(cache)
+    # print(dataframe)
     for col in dataframe.columns:
         cache['data'].append(go.Scatter(x=dataframe.index, y=dataframe[col], name=col, fill='tozeroy'))
     return cache
