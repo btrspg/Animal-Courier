@@ -1,14 +1,15 @@
 [latest]
 
-version=v0.1.4.alpha
+version=v0.1.5.alpha
 
 
 [v0.1.5.alpha]
-date=未知
+date=2019.1.15
 content=    - work-name和ID区分开
     - readme update
     - 加入docs
     - 单个任务统计时，去掉了最上层进程workname及id，防止名字太长
+    - 单个任务的标准输出及标准错误修改，防止输出过大导致卡死
 
 [v0.1.4.alpha]
 date=2019.1.11
