@@ -1,6 +1,14 @@
 [latest]
 
-version=v0.1.5.alpha
+version=v0.1.5.beta
+
+
+
+[v0.1.5.beta]
+date=2019.1.17
+content=    - 修复由于进程完成过快而导致统计时/proc/{pid}/stat文件不存在bug
+
+
 
 
 [v0.1.5.alpha]
