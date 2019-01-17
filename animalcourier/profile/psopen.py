@@ -66,9 +66,14 @@ def process_info(Process, stat_time, cache, name='work', ):
     :param name:
     :return:
     '''
-    name = '{cmd}-{pid}'.format(name=name, pid=Process.pid, cmd=Process.name())
-    cache.setdefault(name, {})
-    cache[name][stat_time] = Process.memory_info().rss
+    try:
+        name = '{cmd}-{pid}'.format(name=name, pid=Process.pid, cmd=Process.name())
+        cache.setdefault(name, {})
+        cache[name][stat_time] = Process.memory_info().rss
+    except Exception:
+        name = 'tmp'
+        cache.setdefault(name,{})
+        cache[name][stat_time] = 0
     return cache
 
 
