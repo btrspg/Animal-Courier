@@ -76,6 +76,8 @@
         
             <li><a class="toctree-l3" href="#interval">interval</a></li>
         
+            <li><a class="toctree-l3" href="#notification">notification</a></li>
+        
             <li><a class="toctree-l3" href="#_5">例子</a></li>
         
         </ul>
@@ -92,6 +94,11 @@
             <li class="toctree-l1">
 		
     <a class="" href="about/">About</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="token/">Addition</a>
 	    </li>
           
         </ul>
@@ -231,6 +238,16 @@ bwa mem test3.1.fq.gz test3.2.fq.gz reference.fasta | samtools view -bSt referen
 <p>是否需要进行内存统计，默认不进行统计。</p>
 <h4 id="interval">interval</h4>
 <p>内存统计间隔时间，如果开启<code>profile</code>参数，则默认时间间隔为10秒。根据运行脚本合理设置间隔时间。</p>
+<h4 id="notification">notification</h4>
+<p>是否开启提醒，目前只支持<a href="https://www.pushbullet.com/">pushBullet</a>，如果需要开启提醒，则需要提供pushBullet的token。</p>
+<p>为了安全，故不显示要求输入token，采用环境变量的形式提供。在<code>~/.bashrc</code>中增加</p>
+<pre><code class="bash">export pushBullet_token='{token}'
+</code></pre>
+
+<p>或者每次运行前使用该命令提供<code>token</code></p>
+<p>pushBullet支持的设备也很多，如下图所示：</p>
+<p><img alt="pushBullet" src="figures/pushBullet.png" /></p>
+<p>可以安装浏览器插件，或者手机软件，这样后台运行的任务也能收到运行完成通知。</p>
 <h2 id="_5">例子</h2>
 <ul>
 <li>test.sh</li>
@@ -331,5 +348,5 @@ max      0.580000
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2019-01-13 16:13:39
+Build Date UTC : 2019-03-05 07:18:00
 -->

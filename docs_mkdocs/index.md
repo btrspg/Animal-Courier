@@ -117,6 +117,27 @@ bwa mem test3.1.fq.gz test3.2.fq.gz reference.fasta | samtools view -bSt referen
 
 内存统计间隔时间，如果开启`profile`参数，则默认时间间隔为10秒。根据运行脚本合理设置间隔时间。
 
+
+#### notification
+
+是否开启提醒，目前只支持[pushBullet](https://www.pushbullet.com/)，如果需要开启提醒，则需要提供pushBullet的token。
+
+为了安全，故不显示要求输入token，采用环境变量的形式提供。在`~/.bashrc`中增加
+
+```bash
+export pushBullet_token='{token}'
+```
+
+或者每次运行前使用该命令提供`token`
+
+pushBullet支持的设备也很多，如下图所示：
+
+![pushBullet](figures/pushBullet.png)
+
+可以安装浏览器插件，或者手机软件，这样后台运行的任务也能收到运行完成通知。
+
+
+
 ## 例子
 
 

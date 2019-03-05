@@ -7,16 +7,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <meta name="author" content="btrspg">
-  <link rel="shortcut icon" href="/Animal-Courier/img/favicon.ico">
-  <title>Animal-Courier</title>
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Addition - Animal-Courier</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
-  <link rel="stylesheet" href="/Animal-Courier/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="/Animal-Courier/css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
   
-  <script src="/Animal-Courier/js/jquery-2.1.1.min.js" defer></script>
-  <script src="/Animal-Courier/js/modernizr-2.8.3.min.js" defer></script>
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Addition";
+    var mkdocs_page_input_path = "token.md";
+    var mkdocs_page_url = "/Animal-Courier/token/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/rust.min.js"></script>
@@ -31,9 +38,9 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
-        <a href="/Animal-Courier/." class="icon icon-home"> Animal-Courier</a>
+        <a href=".." class="icon icon-home"> Animal-Courier</a>
         <div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="/Animal-Courier/search.html" method="get">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
@@ -45,22 +52,28 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="/Animal-Courier/.">Home</a>
+    <a class="" href="..">Home</a>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="/Animal-Courier/user-guide/">User Guide</a>
+    <a class="" href="../user-guide/">User Guide</a>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="/Animal-Courier/about/">About</a>
+    <a class="" href="../about/">About</a>
 	    </li>
           
-            <li class="toctree-l1">
+            <li class="toctree-l1 current">
 		
-    <a class="" href="/Animal-Courier/token/">Addition</a>
+    <a class="current" href="./">Addition</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#pushbullet-token">pushBullet token获取方法</a></li>
+    
+
+    </ul>
 	    </li>
           
         </ul>
@@ -73,7 +86,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="/Animal-Courier/.">Animal-Courier</a>
+        <a href="..">Animal-Courier</a>
       </nav>
 
       
@@ -81,10 +94,15 @@
         <div class="rst-content">
           <div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="/Animal-Courier/.">Docs</a> &raquo;</li>
+    <li><a href="..">Docs</a> &raquo;</li>
     
+      
     
+    <li>Addition</li>
     <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/dota2-BioTools/Animal-Courier/edit/master/docs/token.md"
+          class="icon icon-github"> Edit on GitHub</a>
       
     </li>
   </ul>
@@ -93,15 +111,26 @@
           <div role="main">
             <div class="section">
               
-
-  <h1 id="404-page-not-found">404</h1>
-
-  <p><strong>Page not found</strong></p>
-
-
+                <h2 id="pushbullet-token">pushBullet token获取方法</h2>
+<ol>
+<li>登陆<a href="https://www.pushbullet.com/">pushBullet</a>，注册账号。</li>
+<li>点击自己的头像，然后如下图操作即可，点击生成token，<strong>注意：黑色区域内均为token</strong>。</li>
+</ol>
+<blockquote>
+<p>可能会让你误会的是出现<code>o.kmkr4EcKyzzzzzzzzzzzzz</code>，可能会认为<code>o.</code>不算，后面才是token。所以需要全部复制。</p>
+</blockquote>
+<p><img alt="token" src="../figures/pushBullet-token.png" /></p>
+              
             </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../about/" class="btn btn-neutral" title="About"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
@@ -127,12 +156,14 @@
           <a href="https://github.com/dota2-BioTools/Animal-Courier/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
+        <span><a href="../about/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
       
     </span>
 </div>
-    <script>var base_url = '/Animal-Courier';</script>
-    <script src="/Animal-Courier/js/theme.js" defer></script>
-      <script src="/Animal-Courier/search/main.js" defer></script>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
 
 </body>
 </html>
