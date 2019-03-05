@@ -27,7 +27,7 @@ requirements:
     - numpy >=1.15.4
     - pandas >=0.23.4
     - plotly
-    - apprise
+
 
 
 
@@ -40,7 +40,7 @@ requirements:
     - numpy >=1.15.4
     - pandas >=0.23.4
     - plotly
-    - apprise
+
 
 test:
   command:
