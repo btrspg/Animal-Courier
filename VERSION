@@ -1,6 +1,12 @@
 [latest]
 
-version=v0.1.6.alpha
+version=v0.1.6.alpha2
+
+
+[v0.1.6.alpha2]
+date=2019.3.5
+content= - 增加notification功能，暂时只支持pushBullet
+    - 修改了编译错误
 
 [v0.1.6.alpha]
 date=2019.3.5
