@@ -29,6 +29,9 @@ def get_args():
                         help='If run profile for command(only RSS)')
     parser.add_argument('--interval', type=int, default=10,
                         help='If profile set True, please set interval(seconds) of the memory stats')
+    parser.add_argument('--notification',action='store_true',
+                        help='If send notification to (pushBullet),'
+                             'you should also add an pushBullet token in your ENV')
     return parser.parse_args()
 
 

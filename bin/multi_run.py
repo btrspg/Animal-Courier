@@ -19,12 +19,25 @@ import pandas as pd
 
 def main():
     from animalcourier.utils import write_out, shell_cmd, args
-
+    import platform
     log_format = '%(asctime)s %(filename)s [%(levelname)s] %(message)s'
     logging.basicConfig(format=log_format, level=logging.INFO)
     log = logging.getLogger('MRS')
-
+    token = None
+    title = ''
+    context = ''
     args = args.get_args()
+    if args.notification:
+        token = os.getenv('pushBullet_token', None)
+        if None is token:
+            raise ValueError('You should export pushBullet_token if you need Notification!!')
+        user = os.getenv('USER')
+        pwd = os.getenv('PWD')
+        node = platform.node()
+        project = args.work_name
+        title = '{user}:{project} finished!'.format(user=user, project=project)
+        context = 'NODE:{node}\nPWD:{pwd}\n'.format(node=node, pwd=pwd)
+
     work_log = './log.{work}.{date}'.format(
         work=args.work_name,
         date=time.strftime("%Y%m%d%H%M%S", time.localtime())
@@ -62,7 +75,7 @@ def main():
             merge_data = data[data.columns[-1]].to_frame() if isinstance(merge_data, str) else merge_data.join(
                 data[data.columns[-1]], how='outer')
         from animalcourier.plots import p_in_plotly
-        if isinstance(merge_data,str):
+        if isinstance(merge_data, str):
             print('No plots due to no files')
         else:
             p_in_plotly.ploty_memorys(merge_data, title=os.path.basename(work_log), filename=work_log + '.html')
@@ -73,6 +86,14 @@ def main():
     describe = summary['Time(mins)'].astype(float).describe().to_string()
     # print(describe)
     write_out.write_both_file_and_stream(describe, '{work_log}.log'.format(work_log=work_log))
+    if args.notification:
+        from animalcourier.utils import notify
+        ntf = notify.new_notify()
+        if None is not token:
+            ntf = notify.add_pushbullet(ntf, token)
+            notify.send_sns(ntf, title, context + "\n"
+                            + summary.to_string() +
+                            "\n" + describe)
 
 
 if __name__ == '__main__':
