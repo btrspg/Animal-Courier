@@ -26,7 +26,10 @@
 
 ### Conda(推荐)
 
+由于conda的dep问题，所以在安装的时候，还需要在相同环境下使用`pip install apprise`安装apprise。
+
 ```bash
+pip install apprise
 conda install -r btrspg animal-courier
 ```
 
