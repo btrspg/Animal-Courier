@@ -1,4 +1,4 @@
-{% set version = "0.1.5.beta" %}
+{% set version = "0.1.6.alpha" %}
 
 
 package:
@@ -27,6 +27,7 @@ requirements:
     - numpy >=1.15.4
     - pandas >=0.23.4
     - plotly
+    - apprise
 
 
 
@@ -39,6 +40,7 @@ requirements:
     - numpy >=1.15.4
     - pandas >=0.23.4
     - plotly
+    - apprise
 
 test:
   command:
