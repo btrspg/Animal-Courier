@@ -79,13 +79,7 @@ def main():
             print('No plots due to no files')
         else:
             p_in_plotly.ploty_memorys(merge_data, title=os.path.basename(work_log), filename=work_log + '.html')
-    log.info('ALL FINISHED!!')
-    write_out.write_both_file_and_stream('==' * 30, '{work_log}.log'.format(work_log=work_log))
-    write_out.write_both_file_and_stream(summary.to_string(), '{work_log}.log'.format(work_log=work_log))
-    write_out.write_both_file_and_stream('==' * 30, '{work_log}.log'.format(work_log=work_log))
     describe = summary['Time(mins)'].astype(float).describe().to_string()
-    # print(describe)
-    write_out.write_both_file_and_stream(describe, '{work_log}.log'.format(work_log=work_log))
     if args.notification:
         from animalcourier.utils import notify
         ntf = notify.new_notify()
@@ -94,6 +88,14 @@ def main():
             notify.send_sns(ntf, title, context + "\n"
                             + summary.to_string() +
                             "\n" + describe)
+
+    log.info('ALL FINISHED!!')
+    write_out.write_both_file_and_stream('==' * 30, '{work_log}.log'.format(work_log=work_log))
+    write_out.write_both_file_and_stream(summary.to_string(), '{work_log}.log'.format(work_log=work_log))
+    write_out.write_both_file_and_stream('==' * 30, '{work_log}.log'.format(work_log=work_log))
+
+    # print(describe)
+    write_out.write_both_file_and_stream(describe, '{work_log}.log'.format(work_log=work_log))
 
 
 if __name__ == '__main__':
